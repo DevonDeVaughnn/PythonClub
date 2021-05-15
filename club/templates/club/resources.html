@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<h2 class="devvy-resource-title">Resources</h2>
+<ul class="devy-resource-list">
+  {% for r in resource_list %}
+  <li>{{ r.name }}</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
