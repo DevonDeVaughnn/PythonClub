@@ -12,7 +12,7 @@ class Meeting(models.Model):
     Agenda = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.meetingtitle
+        return self.title
 
     class Meta:
         db_table = "meeting"

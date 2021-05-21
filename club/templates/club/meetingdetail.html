@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block content %}
+<h2 class="devvy-meeting-title">Meeting Detail</h2>
+<p>
+  Meeting: {{meeting.title}} <br />
+  Agenda : {{meeting.Agenda}}<br />
+  Date : {{meeting.date}}<br />
+  Time : {{meeting.time}}<br />
+  Location : {{meeting.location}}
+</p>
+
+{% endblock %}

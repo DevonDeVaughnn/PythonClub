@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<h2 class="devvy-meeting-title">Meetings</h2>
+<ul class="devy-meeting-list">
+  {% for m in meeting_list %}
+  <li><a href="{% url 'detail' id=m.id %}">{{ m.title }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
