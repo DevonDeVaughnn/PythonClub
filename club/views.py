@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Resource, Meeting
 from django.urls import reverse_lazy
 from .forms import MeetingForm, ResourceForm
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -13,16 +14,19 @@ def resources(request):
     return render(request, "club/resources.html", {"resource_list": resource_list})
 
 
+@login_required
 def meetings(request):
     meeting_list = Meeting.objects.all()
     return render(request, "club/meetings.html", {"meeting_list": meeting_list})
 
 
+@login_required
 def meetingdetail(request, id):
     meeting = get_object_or_404(Meeting, pk=id)
     return render(request, "club/meetingdetail.html", {"meeting": meeting})
 
 
+@login_required
 def newMeeting(request):
     form = MeetingForm
 
@@ -37,6 +41,7 @@ def newMeeting(request):
     return render(request, "club/newmeeting.html", {'form': form})
 
 
+@login_required
 def newResource(request):
     form = ResourceForm
 
@@ -49,3 +54,11 @@ def newResource(request):
     else:
         form = ResourceForm()
     return render(request, "club/newresource.html", {'form': form})
+
+
+def loginmessage(request):
+    return render(request, 'club/loginmessage.html')
+
+
+def logoutmessage(request):
+    return render(request, 'club/logoutmessage.html')
